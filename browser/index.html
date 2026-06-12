@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Sign a PDF in the browser</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 40rem;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      line-height: 1.5;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+    input, textarea {
+      display: block;
+      width: 100%;
+      margin-top: 0.25rem;
+      box-sizing: border-box;
+      font-family: inherit;
+    }
+    textarea {
+      font-family: monospace;
+      height: 6rem;
+    }
+    button {
+      margin-top: 1.5rem;
+      padding: 0.5rem 1.5rem;
+      font-size: 1rem;
+    }
+    #status {
+      margin-top: 1rem;
+      white-space: pre-wrap;
+    }
+    #status.error {
+      color: #b00020;
+    }
+    #download {
+      display: none;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sign a PDF in the browser</h1>
+  <p>
+    The private key is imported into the WebCrypto API as a
+    non-extractable key; the signing operation runs via
+    <code>crypto.subtle.sign</code>. The key must be an unencrypted PKCS#8
+    PEM (e.g. <code>openssl pkcs8 -topk8 -nocrypt -in key.pem -out key-pkcs8.pem</code>).
+  </p>
+
+  <form id="sign-form">
+    <label for="pdf">PDF file to sign</label>
+    <input type="file" id="pdf" accept="application/pdf" required>
+
+    <label for="key">Private key (PKCS#8 PEM, unencrypted)</label>
+    <input type="file" id="key" accept=".pem,.key,text/plain" required>
+
+    <label for="cert">Certificate (PEM)</label>
+    <input type="file" id="cert" accept=".pem,.crt,.cer,text/plain" required>
+
+    <label for="reason">Reason (optional)</label>
+    <input type="text" id="reason" placeholder="e.g. I approve this document">
+
+    <label for="location">Location (optional)</label>
+    <input type="text" id="location" placeholder="e.g. Amsterdam">
+
+    <label for="name">Signer name (optional)</label>
+    <input type="text" id="name" placeholder="e.g. Jane Doe">
+
+    <button type="submit">Sign PDF</button>
+  </form>
+
+  <div id="status"></div>
+  <a id="download" download="signed.pdf">Download signed PDF</a>
+
+  <script src="dist/bundle.js"></script>
+</body>
+</html>

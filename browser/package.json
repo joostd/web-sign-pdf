@@ -1,0 +1,25 @@
+{
+  "name": "websignpdf-browser",
+  "version": "0.1.0",
+  "description": "Demo: digitally sign a PDF in the browser, with the private key imported into WebCrypto",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test",
+    "build": "esbuild src/main.js --bundle --outfile=dist/bundle.js --format=iife",
+    "serve": "esbuild src/main.js --bundle --outfile=dist/bundle.js --format=iife --servedir=. --serve=8000"
+  },
+  "dependencies": {
+    "asn1js": "^3.0.5",
+    "pdf-lib": "^1.17.1",
+    "pkijs": "^3.4.0"
+  },
+  "devDependencies": {
+    "@signpdf/utils": "^3.3.0",
+    "esbuild": "^0.25.0",
+    "node-forge": "^1.4.0"
+  }
+}
