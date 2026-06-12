@@ -3,6 +3,9 @@
 A small demo for digitally signing a PDF file with a private key and X.509
 certificate, built on [pyHanko](https://github.com/MatthiasValvekens/pyHanko).
 
+A JavaScript port with the same functionality lives in
+[`javascript/`](javascript/).
+
 ## Setup
 
 ```sh

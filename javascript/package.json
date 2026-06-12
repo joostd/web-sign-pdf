@@ -1,0 +1,27 @@
+{
+  "name": "websignpdf",
+  "version": "0.1.0",
+  "description": "Demo: digitally sign a PDF file with a private key and X.509 certificate",
+  "type": "commonjs",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "sign-pdf": "./src/sign.js",
+    "make-sample-pdf": "./src/samplePdf.js"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@signpdf/placeholder-pdf-lib": "^3.3.0",
+    "@signpdf/signpdf": "^3.3.0",
+    "@signpdf/utils": "^3.3.0",
+    "node-forge": "^1.4.0",
+    "pdf-lib": "^1.17.1"
+  },
+  "devDependencies": {
+    "pkijs": "^3.4.0"
+  }
+}
