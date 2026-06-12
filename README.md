@@ -53,6 +53,31 @@ Then sign it:
 .venv/bin/sign-pdf sample.pdf signed.pdf --key key.pem --cert cert.pem
 ```
 
+## Validating PDF signature
+
+To validate signatures on PDF documents:
+
+Use pdfsign:
+
+```sh
+crew install pdfsig
+pdfsig signed.pdf
+```
+
+If you get an error message `NSS_Init failed: security library: bad database`, this means that you need to first initialize your NSS database:
+
+```sh
+mkdir -p $HOME/.pki/nssdb
+certutil -d $HOME/.pki/nssdb -N
+```
+
+Alternatively, use pyhanko:
+
+```sh
+./.venv/bin/pip install pyhanko-cli
+./.venv/bin/pyhanko sign validate --pretty-print signed.pdf
+```
+
 ## Tests
 
 ```sh
