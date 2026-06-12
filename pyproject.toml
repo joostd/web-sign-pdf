@@ -1,0 +1,23 @@
+[project]
+name = "websignpdf"
+version = "0.1.0"
+description = "Demo: digitally sign a PDF file with a private key and X.509 certificate"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "pyHanko>=0.25",
+]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[project.scripts]
+sign-pdf = "websignpdf.sign:main"
+make-sample-pdf = "websignpdf.sample_pdf:main"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
